@@ -5539,8 +5539,6 @@ Discarded input sections
                 0x00000000       0x1c src/ASF/sam/drivers/usart/usart.o
  .text.usart_set_rx_timeout
                 0x00000000       0x1c src/ASF/sam/drivers/usart/usart.o
- .text.usart_enable_interrupt
-                0x00000000       0x1c src/ASF/sam/drivers/usart/usart.o
  .text.usart_disable_interrupt
                 0x00000000       0x1c src/ASF/sam/drivers/usart/usart.o
  .text.usart_get_interrupt_mask
@@ -7105,7 +7103,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
                 0x2045fffc                __ram_end__ = ((ORIGIN (ram) + LENGTH (ram)) - 0x4)
                 0x00000200                HEAP_SIZE = DEFINED (HEAP_SIZE)?HEAP_SIZE:0x200
 
-.text           0x00400000     0x6710
+.text           0x00400000     0x6798
                 0x00400000                . = ALIGN (0x4)
                 0x00400000                _sfixed = .
  *(.vectors .vectors.*)
@@ -7254,389 +7252,394 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
  .text.usart_reset_rx
                 0x00400f94       0x1c src/ASF/sam/drivers/usart/usart.o
                 0x00400f94                usart_reset_rx
+ .text.usart_enable_interrupt
+                0x00400fb0       0x1c src/ASF/sam/drivers/usart/usart.o
+                0x00400fb0                usart_enable_interrupt
  .text.usart_get_status
-                0x00400fb0       0x18 src/ASF/sam/drivers/usart/usart.o
-                0x00400fb0                usart_get_status
+                0x00400fcc       0x18 src/ASF/sam/drivers/usart/usart.o
+                0x00400fcc                usart_get_status
  .text.usart_reset_status
-                0x00400fc8       0x1c src/ASF/sam/drivers/usart/usart.o
-                0x00400fc8                usart_reset_status
- .text.usart_drive_RTS_pin_high
                 0x00400fe4       0x1c src/ASF/sam/drivers/usart/usart.o
-                0x00400fe4                usart_drive_RTS_pin_high
+                0x00400fe4                usart_reset_status
+ .text.usart_drive_RTS_pin_high
+                0x00401000       0x1c src/ASF/sam/drivers/usart/usart.o
+                0x00401000                usart_drive_RTS_pin_high
  .text.usart_putchar
-                0x00401000       0x30 src/ASF/sam/drivers/usart/usart.o
-                0x00401000                usart_putchar
+                0x0040101c       0x30 src/ASF/sam/drivers/usart/usart.o
+                0x0040101c                usart_putchar
  .text.usart_read
-                0x00401030       0x34 src/ASF/sam/drivers/usart/usart.o
-                0x00401030                usart_read
+                0x0040104c       0x34 src/ASF/sam/drivers/usart/usart.o
+                0x0040104c                usart_read
  .text.usart_disable_writeprotect
-                0x00401064       0x20 src/ASF/sam/drivers/usart/usart.o
-                0x00401064                usart_disable_writeprotect
+                0x00401080       0x20 src/ASF/sam/drivers/usart/usart.o
+                0x00401080                usart_disable_writeprotect
  .text.cpu_irq_save
-                0x00401084       0x38 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
+                0x004010a0       0x38 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
  .text.cpu_irq_is_enabled_flags
-                0x004010bc       0x20 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
+                0x004010d8       0x20 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
  .text.cpu_irq_restore
-                0x004010dc       0x30 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
+                0x004010f8       0x30 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
  .text.Reset_Handler
-                0x0040110c       0xb0 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
-                0x0040110c                Reset_Handler
+                0x00401128       0xb0 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
+                0x00401128                Reset_Handler
  .text.Dummy_Handler
-                0x004011bc        0x8 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
-                0x004011bc                DACC_Handler
-                0x004011bc                DebugMon_Handler
-                0x004011bc                UART3_Handler
-                0x004011bc                UART2_Handler
-                0x004011bc                TRNG_Handler
-                0x004011bc                HardFault_Handler
-                0x004011bc                TC2_Handler
-                0x004011bc                SysTick_Handler
-                0x004011bc                AFEC1_Handler
-                0x004011bc                PendSV_Handler
-                0x004011bc                NMI_Handler
-                0x004011bc                TC7_Handler
-                0x004011bc                QSPI_Handler
-                0x004011bc                ISI_Handler
-                0x004011bc                TC9_Handler
-                0x004011bc                RSWDT_Handler
-                0x004011bc                MCAN1_Handler
-                0x004011bc                USART0_Handler
-                0x004011bc                RTT_Handler
-                0x004011bc                USBHS_Handler
-                0x004011bc                RTC_Handler
-                0x004011bc                UsageFault_Handler
-                0x004011bc                TC6_Handler
-                0x004011bc                WDT_Handler
-                0x004011bc                TC4_Handler
-                0x004011bc                TC1_Handler
-                0x004011bc                HSMCI_Handler
-                0x004011bc                UART1_Handler
-                0x004011bc                TC3_Handler
-                0x004011bc                Dummy_Handler
-                0x004011bc                TWIHS1_Handler
-                0x004011bc                XDMAC_Handler
-                0x004011bc                UART4_Handler
-                0x004011bc                PWM1_Handler
-                0x004011bc                PWM0_Handler
-                0x004011bc                AFEC0_Handler
-                0x004011bc                TC11_Handler
-                0x004011bc                SSC_Handler
-                0x004011bc                ACC_Handler
-                0x004011bc                PMC_Handler
-                0x004011bc                GMAC_Handler
-                0x004011bc                MemManage_Handler
-                0x004011bc                SUPC_Handler
-                0x004011bc                SVC_Handler
-                0x004011bc                TC8_Handler
-                0x004011bc                EFC_Handler
-                0x004011bc                USART2_Handler
-                0x004011bc                SDRAMC_Handler
-                0x004011bc                SPI1_Handler
-                0x004011bc                MCAN0_Handler
-                0x004011bc                TC10_Handler
-                0x004011bc                TWIHS2_Handler
-                0x004011bc                UART0_Handler
-                0x004011bc                BusFault_Handler
-                0x004011bc                RSTC_Handler
-                0x004011bc                TC0_Handler
-                0x004011bc                TC5_Handler
-                0x004011bc                AES_Handler
-                0x004011bc                ICM_Handler
-                0x004011bc                TWIHS0_Handler
-                0x004011bc                SPI0_Handler
+                0x004011d8        0x8 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
+                0x004011d8                DACC_Handler
+                0x004011d8                DebugMon_Handler
+                0x004011d8                UART3_Handler
+                0x004011d8                UART2_Handler
+                0x004011d8                TRNG_Handler
+                0x004011d8                HardFault_Handler
+                0x004011d8                TC2_Handler
+                0x004011d8                SysTick_Handler
+                0x004011d8                AFEC1_Handler
+                0x004011d8                PendSV_Handler
+                0x004011d8                NMI_Handler
+                0x004011d8                TC7_Handler
+                0x004011d8                QSPI_Handler
+                0x004011d8                ISI_Handler
+                0x004011d8                TC9_Handler
+                0x004011d8                RSWDT_Handler
+                0x004011d8                MCAN1_Handler
+                0x004011d8                USART0_Handler
+                0x004011d8                RTT_Handler
+                0x004011d8                USBHS_Handler
+                0x004011d8                RTC_Handler
+                0x004011d8                UsageFault_Handler
+                0x004011d8                TC6_Handler
+                0x004011d8                WDT_Handler
+                0x004011d8                TC4_Handler
+                0x004011d8                TC1_Handler
+                0x004011d8                HSMCI_Handler
+                0x004011d8                UART1_Handler
+                0x004011d8                TC3_Handler
+                0x004011d8                Dummy_Handler
+                0x004011d8                TWIHS1_Handler
+                0x004011d8                XDMAC_Handler
+                0x004011d8                UART4_Handler
+                0x004011d8                PWM1_Handler
+                0x004011d8                PWM0_Handler
+                0x004011d8                AFEC0_Handler
+                0x004011d8                TC11_Handler
+                0x004011d8                SSC_Handler
+                0x004011d8                ACC_Handler
+                0x004011d8                PMC_Handler
+                0x004011d8                GMAC_Handler
+                0x004011d8                MemManage_Handler
+                0x004011d8                SUPC_Handler
+                0x004011d8                SVC_Handler
+                0x004011d8                TC8_Handler
+                0x004011d8                EFC_Handler
+                0x004011d8                USART2_Handler
+                0x004011d8                SDRAMC_Handler
+                0x004011d8                SPI1_Handler
+                0x004011d8                MCAN0_Handler
+                0x004011d8                TC10_Handler
+                0x004011d8                TWIHS2_Handler
+                0x004011d8                UART0_Handler
+                0x004011d8                BusFault_Handler
+                0x004011d8                RSTC_Handler
+                0x004011d8                TC0_Handler
+                0x004011d8                TC5_Handler
+                0x004011d8                AES_Handler
+                0x004011d8                ICM_Handler
+                0x004011d8                TWIHS0_Handler
+                0x004011d8                SPI0_Handler
  .text.SystemCoreClockUpdate
-                0x004011c4      0x16c src/ASF/sam/utils/cmsis/same70/source/templates/system_same70.o
-                0x004011c4                SystemCoreClockUpdate
+                0x004011e0      0x16c src/ASF/sam/utils/cmsis/same70/source/templates/system_same70.o
+                0x004011e0                SystemCoreClockUpdate
  .text.system_init_flash
-                0x00401330       0x98 src/ASF/sam/utils/cmsis/same70/source/templates/system_same70.o
-                0x00401330                system_init_flash
- .text._sbrk    0x004013c8       0x58 src/ASF/sam/utils/syscalls/gcc/syscalls.o
-                0x004013c8                _sbrk
+                0x0040134c       0x98 src/ASF/sam/utils/cmsis/same70/source/templates/system_same70.o
+                0x0040134c                system_init_flash
+ .text._sbrk    0x004013e4       0x58 src/ASF/sam/utils/syscalls/gcc/syscalls.o
+                0x004013e4                _sbrk
  .text.NVIC_EnableIRQ
-                0x00401420       0x34 src/main.o
+                0x0040143c       0x34 src/main.o
  .text.NVIC_SetPriority
-                0x00401454       0x54 src/main.o
+                0x00401470       0x54 src/main.o
  .text.osc_get_rate
-                0x004014a8       0x74 src/main.o
+                0x004014c4       0x74 src/main.o
  .text.sysclk_get_main_hz
-                0x0040151c       0x20 src/main.o
+                0x00401538       0x20 src/main.o
  .text.sysclk_get_cpu_hz
-                0x0040153c       0x14 src/main.o
+                0x00401558       0x14 src/main.o
  .text.sysclk_get_peripheral_hz
-                0x00401550       0x14 src/main.o
+                0x0040156c       0x14 src/main.o
  .text.sysclk_enable_peripheral_clock
-                0x00401564       0x1c src/main.o
+                0x00401580       0x1c src/main.o
  .text.usart_serial_getchar
-                0x00401580      0x108 src/main.o
+                0x0040159c      0x108 src/main.o
  .text.Button1_Handler
-                0x00401688       0x34 src/main.o
+                0x004016a4       0x34 src/main.o
  .text.USART1_Handler
-                0x004016bc       0x44 src/main.o
-                0x004016bc                USART1_Handler
+                0x004016d8       0x44 src/main.o
+                0x004016d8                USART1_Handler
  .text.pin_toggle
-                0x00401700       0x40 src/main.o
-                0x00401700                pin_toggle
+                0x0040171c       0x40 src/main.o
+                0x0040171c                pin_toggle
  .text.BUT_init
-                0x00401740       0x6c src/main.o
-                0x00401740                BUT_init
+                0x0040175c       0x6c src/main.o
+                0x0040175c                BUT_init
  .text.LED_init
-                0x004017ac       0x34 src/main.o
-                0x004017ac                LED_init
+                0x004017c8       0x34 src/main.o
+                0x004017c8                LED_init
  .text.USART1_init
-                0x004017e0       0xb0 src/main.o
+                0x004017fc       0xb0 src/main.o
  .text.usart_puts
-                0x00401890       0x44 src/main.o
-                0x00401890                usart_puts
+                0x004018ac       0x44 src/main.o
+                0x004018ac                usart_puts
  .text.usart_gets
-                0x004018d4       0x28 src/main.o
-                0x004018d4                usart_gets
- .text.main     0x004018fc       0xf8 src/main.o
-                0x004018fc                main
- .text          0x004019f4       0x30 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_aeabi_uldivmod.o)
-                0x004019f4                __aeabi_uldivmod
- .text          0x00401a24      0x2e4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_udivmoddi4.o)
-                0x00401a24                __udivmoddi4
- .text          0x00401d08        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_dvmd_tls.o)
-                0x00401d08                __aeabi_idiv0
-                0x00401d08                __aeabi_ldiv0
+                0x004018f0       0x60 src/main.o
+                0x004018f0                usart_gets
+ .text.main     0x00401950      0x10c src/main.o
+                0x00401950                main
+ .text          0x00401a5c       0x30 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_aeabi_uldivmod.o)
+                0x00401a5c                __aeabi_uldivmod
+ .text          0x00401a8c      0x2e4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_udivmoddi4.o)
+                0x00401a8c                __udivmoddi4
+ .text          0x00401d70        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_dvmd_tls.o)
+                0x00401d70                __aeabi_idiv0
+                0x00401d70                __aeabi_ldiv0
  .text.__libc_init_array
-                0x00401d0c       0x50 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-init.o)
-                0x00401d0c                __libc_init_array
- .text.memset   0x00401d5c       0x9c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-memset.o)
-                0x00401d5c                memset
- .text.sprintf  0x00401df8       0x4c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-sprintf.o)
-                0x00401df8                sprintf
+                0x00401d74       0x50 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-init.o)
+                0x00401d74                __libc_init_array
+ .text.memset   0x00401dc4       0x9c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-memset.o)
+                0x00401dc4                memset
+ .text.sprintf  0x00401e60       0x4c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-sprintf.o)
+                0x00401e60                sprintf
  .text._svfprintf_r
-                0x00401e44     0x169c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfprintf.o)
-                0x00401e44                _svfprintf_r
+                0x00401eac     0x169c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfprintf.o)
+                0x00401eac                _svfprintf_r
  .text.startup.register_fini
-                0x004034e0       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__call_atexit.o)
- .text.atexit   0x004034f4        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-atexit.o)
-                0x004034f4                atexit
- .text.quorem   0x00403500      0x128 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-dtoa.o)
- .text._dtoa_r  0x00403628      0xe58 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-dtoa.o)
-                0x00403628                _dtoa_r
+                0x00403548       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x0040355c        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-atexit.o)
+                0x0040355c                atexit
+ .text.quorem   0x00403568      0x128 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-dtoa.o)
+ .text._dtoa_r  0x00403690      0xe58 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-dtoa.o)
+                0x00403690                _dtoa_r
  .text.__libc_fini_array
-                0x00404480       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-fini.o)
-                0x00404480                __libc_fini_array
+                0x004044e8       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-fini.o)
+                0x004044e8                __libc_fini_array
  .text._localeconv_r
-                0x004044a8        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-locale.o)
-                0x004044a8                _localeconv_r
+                0x00404510        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-locale.o)
+                0x00404510                _localeconv_r
  .text._malloc_r
-                0x004044b0      0x570 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mallocr.o)
-                0x004044b0                _malloc_r
- .text          0x00404a20       0xa0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-memchr.o)
-                0x00404a20                memchr
- .text          0x00404ac0      0x134 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-memcpy.o)
-                0x00404ac0                memcpy
+                0x00404518      0x570 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mallocr.o)
+                0x00404518                _malloc_r
+ *fill*         0x00404a88        0x8 
+ .text          0x00404a90       0xa0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-memchr.o)
+                0x00404a90                memchr
+ .text          0x00404b30      0x134 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-memcpy.o)
+                0x00404b30                memcpy
  .text.__malloc_lock
-                0x00404bf4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mlock.o)
-                0x00404bf4                __malloc_lock
+                0x00404c64        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mlock.o)
+                0x00404c64                __malloc_lock
  .text.__malloc_unlock
-                0x00404bf8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mlock.o)
-                0x00404bf8                __malloc_unlock
- .text._Balloc  0x00404bfc       0x4c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404bfc                _Balloc
- .text._Bfree   0x00404c48       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404c48                _Bfree
+                0x00404c68        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mlock.o)
+                0x00404c68                __malloc_unlock
+ .text._Balloc  0x00404c6c       0x4c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404c6c                _Balloc
+ .text._Bfree   0x00404cb8       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404cb8                _Bfree
  .text.__multadd
-                0x00404c5c       0x80 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404c5c                __multadd
+                0x00404ccc       0x80 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404ccc                __multadd
  .text.__hi0bits
-                0x00404cdc       0x40 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404cdc                __hi0bits
+                0x00404d4c       0x40 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404d4c                __hi0bits
  .text.__lo0bits
-                0x00404d1c       0x5c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404d1c                __lo0bits
- .text.__i2b    0x00404d78       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404d78                __i2b
+                0x00404d8c       0x5c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404d8c                __lo0bits
+ .text.__i2b    0x00404de8       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404de8                __i2b
  .text.__multiply
-                0x00404d8c      0x130 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404d8c                __multiply
+                0x00404dfc      0x130 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404dfc                __multiply
  .text.__pow5mult
-                0x00404ebc       0xa0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404ebc                __pow5mult
+                0x00404f2c       0xa0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404f2c                __pow5mult
  .text.__lshift
-                0x00404f5c       0xb0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00404f5c                __lshift
- .text.__mcmp   0x0040500c       0x40 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x0040500c                __mcmp
- .text.__mdiff  0x0040504c      0x114 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x0040504c                __mdiff
- .text.__d2b    0x00405160       0xb8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x00405160                __d2b
- .text._sbrk_r  0x00405218       0x24 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-sbrkr.o)
-                0x00405218                _sbrk_r
- *fill*         0x0040523c        0x4 
- .text          0x00405240       0xdc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-strlen.o)
-                0x00405240                strlen
+                0x00404fcc       0xb0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00404fcc                __lshift
+ .text.__mcmp   0x0040507c       0x40 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x0040507c                __mcmp
+ .text.__mdiff  0x004050bc      0x114 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x004050bc                __mdiff
+ .text.__d2b    0x004051d0       0xb8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x004051d0                __d2b
+ .text._sbrk_r  0x00405288       0x24 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-sbrkr.o)
+                0x00405288                _sbrk_r
+ *fill*         0x004052ac       0x14 
+ .text          0x004052c0       0xdc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-strlen.o)
+                0x004052c0                strlen
  .text.__ssprint_r
-                0x0040531c      0x100 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfiprintf.o)
-                0x0040531c                __ssprint_r
+                0x0040539c      0x100 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfiprintf.o)
+                0x0040539c                __ssprint_r
  .text.__register_exitproc
-                0x0040541c       0xa4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__atexit.o)
-                0x0040541c                __register_exitproc
+                0x0040549c       0xa4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__atexit.o)
+                0x0040549c                __register_exitproc
  .text._calloc_r
-                0x004054c0       0x60 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-callocr.o)
-                0x004054c0                _calloc_r
+                0x00405540       0x60 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-callocr.o)
+                0x00405540                _calloc_r
  .text._malloc_trim_r
-                0x00405520       0x9c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-freer.o)
-                0x00405520                _malloc_trim_r
- .text._free_r  0x004055bc      0x1d0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-freer.o)
-                0x004055bc                _free_r
- .text.memmove  0x0040578c       0xc8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-memmove.o)
-                0x0040578c                memmove
+                0x004055a0       0x9c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-freer.o)
+                0x004055a0                _malloc_trim_r
+ .text._free_r  0x0040563c      0x1d0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-freer.o)
+                0x0040563c                _free_r
+ .text.memmove  0x0040580c       0xc8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-memmove.o)
+                0x0040580c                memmove
  .text._realloc_r
-                0x00405854      0x3e0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-reallocr.o)
-                0x00405854                _realloc_r
- .text          0x00405c34      0x370 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_addsubdf3.o)
-                0x00405c34                __aeabi_drsub
-                0x00405c3c                __aeabi_dsub
-                0x00405c3c                __subdf3
-                0x00405c40                __aeabi_dadd
-                0x00405c40                __adddf3
-                0x00405eb8                __floatunsidf
-                0x00405eb8                __aeabi_ui2d
-                0x00405ed8                __floatsidf
-                0x00405ed8                __aeabi_i2d
-                0x00405efc                __aeabi_f2d
-                0x00405efc                __extendsfdf2
-                0x00405f38                __floatundidf
-                0x00405f38                __aeabi_ul2d
-                0x00405f48                __floatdidf
-                0x00405f48                __aeabi_l2d
- .text          0x00405fa4      0x424 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_muldivdf3.o)
-                0x00405fa4                __aeabi_dmul
-                0x00405fa4                __muldf3
-                0x004061f8                __divdf3
-                0x004061f8                __aeabi_ddiv
- .text          0x004063c8      0x110 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_cmpdf2.o)
-                0x004063c8                __gtdf2
-                0x004063c8                __gedf2
-                0x004063d0                __ltdf2
-                0x004063d0                __ledf2
-                0x004063d8                __nedf2
-                0x004063d8                __eqdf2
-                0x004063d8                __cmpdf2
-                0x00406454                __aeabi_cdrcmple
-                0x00406464                __aeabi_cdcmpeq
-                0x00406464                __aeabi_cdcmple
-                0x00406474                __aeabi_dcmpeq
-                0x00406488                __aeabi_dcmplt
-                0x0040649c                __aeabi_dcmple
-                0x004064b0                __aeabi_dcmpge
-                0x004064c4                __aeabi_dcmpgt
- .text          0x004064d8       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_unorddf2.o)
-                0x004064d8                __unorddf2
-                0x004064d8                __aeabi_dcmpun
- .text          0x00406504       0x50 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixdfsi.o)
-                0x00406504                __aeabi_d2iz
-                0x00406504                __fixdfsi
+                0x004058d4      0x3e0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-reallocr.o)
+                0x004058d4                _realloc_r
+ .text          0x00405cb4      0x370 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_addsubdf3.o)
+                0x00405cb4                __aeabi_drsub
+                0x00405cbc                __aeabi_dsub
+                0x00405cbc                __subdf3
+                0x00405cc0                __aeabi_dadd
+                0x00405cc0                __adddf3
+                0x00405f38                __floatunsidf
+                0x00405f38                __aeabi_ui2d
+                0x00405f58                __floatsidf
+                0x00405f58                __aeabi_i2d
+                0x00405f7c                __aeabi_f2d
+                0x00405f7c                __extendsfdf2
+                0x00405fb8                __floatundidf
+                0x00405fb8                __aeabi_ul2d
+                0x00405fc8                __floatdidf
+                0x00405fc8                __aeabi_l2d
+ .text          0x00406024      0x424 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_muldivdf3.o)
+                0x00406024                __aeabi_dmul
+                0x00406024                __muldf3
+                0x00406278                __divdf3
+                0x00406278                __aeabi_ddiv
+ .text          0x00406448      0x110 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_cmpdf2.o)
+                0x00406448                __gtdf2
+                0x00406448                __gedf2
+                0x00406450                __ltdf2
+                0x00406450                __ledf2
+                0x00406458                __nedf2
+                0x00406458                __eqdf2
+                0x00406458                __cmpdf2
+                0x004064d4                __aeabi_cdrcmple
+                0x004064e4                __aeabi_cdcmpeq
+                0x004064e4                __aeabi_cdcmple
+                0x004064f4                __aeabi_dcmpeq
+                0x00406508                __aeabi_dcmplt
+                0x0040651c                __aeabi_dcmple
+                0x00406530                __aeabi_dcmpge
+                0x00406544                __aeabi_dcmpgt
+ .text          0x00406558       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_unorddf2.o)
+                0x00406558                __unorddf2
+                0x00406558                __aeabi_dcmpun
+ .text          0x00406584       0x50 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixdfsi.o)
+                0x00406584                __aeabi_d2iz
+                0x00406584                __fixdfsi
  *(.glue_7t)
- .glue_7t       0x00406554        0x0 linker stubs
+ .glue_7t       0x004065d4        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x00406554        0x0 linker stubs
+ .glue_7        0x004065d4        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x00406554       0x11 src/main.o
- *fill*         0x00406565        0x3 
+ .rodata        0x004065d4       0x15 src/main.o
+ *fill*         0x004065e9        0x3 
  .rodata.str1.4
-                0x00406568        0x2 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-impure.o)
- *fill*         0x0040656a        0x2 
+                0x004065ec        0x2 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-impure.o)
+ *fill*         0x004065ee        0x2 
  .rodata._global_impure_ptr
-                0x0040656c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-impure.o)
-                0x0040656c                _global_impure_ptr
+                0x004065f0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-impure.o)
+                0x004065f0                _global_impure_ptr
  .rodata.zeroes.7035
-                0x00406570       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfprintf.o)
+                0x004065f4       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x00406580       0x42 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfprintf.o)
- *fill*         0x004065c2        0x2 
+                0x00406604       0x42 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfprintf.o)
+ *fill*         0x00406646        0x2 
  .rodata.blanks.7034
-                0x004065c4       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfprintf.o)
+                0x00406648       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x004065d4       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-dtoa.o)
+                0x00406658       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-dtoa.o)
                                  0x12 (size before relaxing)
  .rodata.str1.4
-                0x004065e4        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-locale.o)
+                0x00406668        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-locale.o)
                                  0x12 (size before relaxing)
+ *fill*         0x00406674        0x4 
  .rodata.__mprec_tens
-                0x004065f0       0xc8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x004065f0                __mprec_tens
+                0x00406678       0xc8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00406678                __mprec_tens
  .rodata.__mprec_bigtens
-                0x004066b8       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
-                0x004066b8                __mprec_bigtens
+                0x00406740       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00406740                __mprec_bigtens
  .rodata.p05.5373
-                0x004066e0        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
+                0x00406768        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-mprec.o)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x004066ec                . = ALIGN (0x4)
+                0x00406774                . = ALIGN (0x4)
  *(.init)
- .init          0x004066ec        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crti.o
-                0x004066ec                _init
- .init          0x004066f0        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtn.o
-                0x004066f8                . = ALIGN (0x4)
-                0x004066f8                __preinit_array_start = .
+ .init          0x00406774        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crti.o
+                0x00406774                _init
+ .init          0x00406778        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtn.o
+                0x00406780                . = ALIGN (0x4)
+                0x00406780                __preinit_array_start = .
  *(.preinit_array)
-                0x004066f8                __preinit_array_end = .
-                0x004066f8                . = ALIGN (0x4)
-                0x004066f8                __init_array_start = .
+                0x00406780                __preinit_array_end = .
+                0x00406780                . = ALIGN (0x4)
+                0x00406780                __init_array_start = .
  *(SORT(.init_array.*))
  .init_array.00000
-                0x004066f8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__call_atexit.o)
+                0x00406780        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__call_atexit.o)
  *(.init_array)
- .init_array    0x004066fc        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
-                0x00406700                __init_array_end = .
-                0x00406700                . = ALIGN (0x4)
+ .init_array    0x00406784        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
+                0x00406788                __init_array_end = .
+                0x00406788                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00406700                . = ALIGN (0x4)
+                0x00406788                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00406700        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crti.o
-                0x00406700                _fini
- .fini          0x00406704        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtn.o
-                0x0040670c                . = ALIGN (0x4)
-                0x0040670c                __fini_array_start = .
+ .fini          0x00406788        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crti.o
+                0x00406788                _fini
+ .fini          0x0040678c        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtn.o
+                0x00406794                . = ALIGN (0x4)
+                0x00406794                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x0040670c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
+ .fini_array    0x00406794        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00406710                __fini_array_end = .
+                0x00406798                __fini_array_end = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00406710                . = ALIGN (0x4)
-                0x00406710                _efixed = .
+                0x00406798                . = ALIGN (0x4)
+                0x00406798                _efixed = .
                 [!provide]                PROVIDE (__exidx_start, .)
 
-.vfp11_veneer   0x00406710        0x0
- .vfp11_veneer  0x00406710        0x0 linker stubs
+.vfp11_veneer   0x00406798        0x0
+ .vfp11_veneer  0x00406798        0x0 linker stubs
 
-.v4_bx          0x00406710        0x0
- .v4_bx         0x00406710        0x0 linker stubs
+.v4_bx          0x00406798        0x0
+ .v4_bx         0x00406798        0x0 linker stubs
 
-.iplt           0x00406710        0x0
- .iplt          0x00406710        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
+.iplt           0x00406798        0x0
+ .iplt          0x00406798        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
 
-.ARM.exidx      0x00406710        0x8
+.ARM.exidx      0x00406798        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x00406710        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x00406798        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_udivmoddi4.o)
                 [!provide]                PROVIDE (__exidx_end, .)
 
-.eh_frame       0x00406718        0x0
- .eh_frame      0x00406718        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
+.eh_frame       0x004067a0        0x0
+ .eh_frame      0x004067a0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
 
-.rel.dyn        0x00406718        0x0
- .rel.iplt      0x00406718        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
+.rel.dyn        0x004067a0        0x0
+ .rel.iplt      0x004067a0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
 
-.jcr            0x00406718        0x0
- .jcr           0x00406718        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
+.jcr            0x004067a0        0x0
+ .jcr           0x004067a0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
 
-.igot.plt       0x00406718        0x0
- .igot.plt      0x00406718        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
-                0x00406718                . = ALIGN (0x4)
-                0x00406718                _etext = .
+.igot.plt       0x004067a0        0x0
+ .igot.plt      0x004067a0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m/crtbegin.o
+                0x004067a0                . = ALIGN (0x4)
+                0x004067a0                _etext = .
 
-.relocate       0x20400000      0x88c load address 0x00406718
+.relocate       0x20400000      0x88c load address 0x004067a0
                 0x20400000                . = ALIGN (0x4)
                 0x20400000                _srelocate = .
  *(.ramfunc .ramfunc.*)
@@ -7669,7 +7672,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
                 0x2040088c                . = ALIGN (0x4)
                 0x2040088c                _erelocate = .
 
-.bss            0x2040088c      0x198 load address 0x00406fa4
+.bss            0x2040088c      0x198 load address 0x0040702c
                 0x2040088c                . = ALIGN (0x4)
                 0x2040088c                _sbss = .
                 0x2040088c                _szero = .
@@ -7705,7 +7708,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
                 0x20400a24                _ebss = .
                 0x20400a24                _ezero = .
 
-.stack          0x20400a24     0x2004 load address 0x0040713c
+.stack          0x20400a24     0x2004 load address 0x004071c4
                 0x20400a28                . = ALIGN (0x8)
  *fill*         0x20400a24        0x4 
                 0x20400a28                _sstack = .
@@ -7714,7 +7717,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
                 0x20402a28                . = ALIGN (0x8)
                 0x20402a28                _estack = .
 
-.heap           0x20402a28      0x200 load address 0x00409140
+.heap           0x20402a28      0x200 load address 0x004091c8
                 0x20402a28                . = ALIGN (0x8)
                 0x20402a28                _sheap = .
                 0x20402c28                . = (. + HEAP_SIZE)
@@ -7838,7 +7841,7 @@ OUTPUT(13-UART.elf elf32-littlearm)
  .comment       0x00000059       0x5a src/ASF/sam/utils/syscalls/gcc/syscalls.o
  .comment       0x00000059       0x5a src/main.o
 
-.debug_info     0x00000000     0x9512
+.debug_info     0x00000000     0x952b
  .debug_info    0x00000000      0x759 src/ASF/common/services/clock/same70/sysclk.o
  .debug_info    0x00000759      0x134 src/ASF/common/services/delay/sam/cycle_counter.o
  .debug_info    0x0000088d      0x1e9 src/ASF/common/utils/interrupt/interrupt_sam_nvic.o
@@ -7850,9 +7853,9 @@ OUTPUT(13-UART.elf elf32-littlearm)
  .debug_info    0x00005fe0      0xc04 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
  .debug_info    0x00006be4      0x570 src/ASF/sam/utils/cmsis/same70/source/templates/system_same70.o
  .debug_info    0x00007154      0x435 src/ASF/sam/utils/syscalls/gcc/syscalls.o
- .debug_info    0x00007589     0x1f89 src/main.o
+ .debug_info    0x00007589     0x1fa2 src/main.o
 
-.debug_abbrev   0x00000000     0x1403
+.debug_abbrev   0x00000000     0x1410
  .debug_abbrev  0x00000000      0x1c5 src/ASF/common/services/clock/same70/sysclk.o
  .debug_abbrev  0x000001c5       0x9d src/ASF/common/services/delay/sam/cycle_counter.o
  .debug_abbrev  0x00000262       0xef src/ASF/common/utils/interrupt/interrupt_sam_nvic.o
@@ -7864,7 +7867,7 @@ OUTPUT(13-UART.elf elf32-littlearm)
  .debug_abbrev  0x00000ca4      0x214 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
  .debug_abbrev  0x00000eb8       0xf5 src/ASF/sam/utils/cmsis/same70/source/templates/system_same70.o
  .debug_abbrev  0x00000fad      0x120 src/ASF/sam/utils/syscalls/gcc/syscalls.o
- .debug_abbrev  0x000010cd      0x336 src/main.o
+ .debug_abbrev  0x000010cd      0x343 src/main.o
 
 .debug_loc      0x00000000     0x6298
  .debug_loc     0x00000000      0x4a0 src/ASF/common/services/clock/same70/sysclk.o
@@ -8096,7 +8099,7 @@ OUTPUT(13-UART.elf elf32-littlearm)
  .debug_macro   0x0001ce66       0x1c src/main.o
  .debug_macro   0x0001ce82      0x1ad src/main.o
 
-.debug_line     0x00000000     0x8c3a
+.debug_line     0x00000000     0x8c41
  .debug_line    0x00000000      0xc3b src/ASF/common/services/clock/same70/sysclk.o
  .debug_line    0x00000c3b      0x9c1 src/ASF/common/services/delay/sam/cycle_counter.o
  .debug_line    0x000015fc      0x9dd src/ASF/common/utils/interrupt/interrupt_sam_nvic.o
@@ -8108,9 +8111,9 @@ OUTPUT(13-UART.elf elf32-littlearm)
  .debug_line    0x00006555      0xa94 src/ASF/sam/utils/cmsis/same70/source/templates/gcc/startup_same70.o
  .debug_line    0x00006fe9      0x819 src/ASF/sam/utils/cmsis/same70/source/templates/system_same70.o
  .debug_line    0x00007802      0x3da src/ASF/sam/utils/syscalls/gcc/syscalls.o
- .debug_line    0x00007bdc     0x105e src/main.o
+ .debug_line    0x00007bdc     0x1065 src/main.o
 
-.debug_str      0x00000000    0x8a98c
+.debug_str      0x00000000    0x8a9d2
  .debug_str     0x00000000    0x84d01 src/ASF/common/services/clock/same70/sysclk.o
                               0x8534b (size before relaxing)
  .debug_str     0x00084d01      0x1b5 src/ASF/common/services/delay/sam/cycle_counter.o
@@ -8133,8 +8136,8 @@ OUTPUT(13-UART.elf elf32-littlearm)
                               0x726a6 (size before relaxing)
  .debug_str     0x00087e76      0x74f src/ASF/sam/utils/syscalls/gcc/syscalls.o
                                0x6a06 (size before relaxing)
- .debug_str     0x000885c5     0x23c7 src/main.o
-                              0x8846c (size before relaxing)
+ .debug_str     0x000885c5     0x240d src/main.o
+                              0x8846f (size before relaxing)
 
 .debug_frame    0x00000000     0x3570
  .debug_frame   0x00000000      0x240 src/ASF/common/services/clock/same70/sysclk.o
@@ -8803,6 +8806,7 @@ usart_disable_writeprotect                        src/ASF/sam/drivers/usart/usar
 usart_drive_RTS_pin_high                          src/ASF/sam/drivers/usart/usart.o
 usart_drive_RTS_pin_low                           src/ASF/sam/drivers/usart/usart.o
 usart_enable_interrupt                            src/ASF/sam/drivers/usart/usart.o
+                                                  src/main.o
 usart_enable_rx                                   src/ASF/sam/drivers/usart/usart.o
                                                   src/main.o
 usart_enable_tx                                   src/ASF/sam/drivers/usart/usart.o

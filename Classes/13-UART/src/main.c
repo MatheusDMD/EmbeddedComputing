@@ -169,12 +169,13 @@ uint32_t usart_puts(uint8_t *pstring){
  */
 uint32_t usart_gets(uint8_t *pstring){
 	int count = 0;
+	char curr;
 	while(pstring[count] != "\n"){
-		pstring[count] = usart_serial_getchar(USART_COM, *pstring);
-		count++;
+		usart_serial_getchar(USART_COM, pstring);
+		pstring[count++] = pstring[count];
 	}
 	pstring[count-1] = 0;
-  return 0;  
+  return count;  
 }
 
 /************************************************************************/
