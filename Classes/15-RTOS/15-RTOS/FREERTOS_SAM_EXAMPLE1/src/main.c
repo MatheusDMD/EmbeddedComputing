@@ -98,6 +98,15 @@
 #define TASK_LED_STACK_PRIORITY            (tskIDLE_PRIORITY)
 
 /**
+* BUTTONS
+*/
+//BUT_BOARD
+#define BUT_PIO_BOARD_ID    ID_PIOA
+#define BUT_PIO_BOARD		PIOA
+#define BUT_PIN_BOARD		11
+#define BUT_PIN_BOARD_MASK    (1 << BUT_PIN_BOARD)
+#define BUT_DEBOUNCING_VALUE  79
+/**
  * LEDs
  */
 // LED 1
@@ -118,6 +127,7 @@
 #define LED3_PIN       11
 #define LED3_PIN_MASK  (1 << LED3_PIN)
 
+SemaphoreHandle_t xSemaphore;
 
 extern void vApplicationStackOverflowHook(xTaskHandle *pxTask,
 		signed char *pcTaskName);
@@ -125,6 +135,11 @@ extern void vApplicationIdleHook(void);
 extern void vApplicationTickHook(void);
 extern void vApplicationMallocFailedHook(void);
 extern void xPortSysTickHandler(void);
+
+
+int get_pio_status(Pio *p_pio, const uint32_t ul_mask){
+	return (p_pio->PIO_PDSR & (1 << ul_mask));
+}
 
 #if !(defined(SAMV71) || defined(SAME70))
 /**
@@ -200,12 +215,12 @@ static void task_led(void *pvParameters)
 {
 	UNUSED(pvParameters);
 	for (;;) {
-	#if SAM4CM
-		LED_Toggle(LED4);
-	#else
-		LED_Toggle(LED0);
-	#endif
-		vTaskDelay(1000);
+		//Troca estado do LED ao liberar semaphore
+		if((xSemaphoreTake( xSemaphore, ( TickType_t ) 0 ) == pdTRUE)){
+			LED_Toggle(LED0);
+			vTaskDelay(100);
+		}
+		vTaskDelay(100);
 	}
 }
 
@@ -214,9 +229,9 @@ static void task_led1(void *pvParameters)
 	UNUSED(pvParameters);
 	for (;;) {
 		pio_set(LED1_PIO, LED1_PIN_MASK);
-		vTaskDelay(1000);
+		vTaskDelay(100);
 		pio_clear(LED1_PIO, LED1_PIN_MASK);
-		vTaskDelay(1000);
+		vTaskDelay(100);
 	}
 }
 
@@ -225,9 +240,9 @@ static void task_led2(void *pvParameters)
 	UNUSED(pvParameters);
 	for (;;) {
 		pio_set(LED2_PIO, LED2_PIN_MASK);
-		vTaskDelay(1000);
+		vTaskDelay(300);
 		pio_clear(LED2_PIO, LED2_PIN_MASK);
-		vTaskDelay(1000);
+		vTaskDelay(300);
 	}
 }
 
@@ -236,9 +251,22 @@ static void task_led3(void *pvParameters)
 	UNUSED(pvParameters);
 	for (;;) {
 		pio_set(LED3_PIO, LED3_PIN_MASK);
-		vTaskDelay(1000);
+		vTaskDelay(500);
 		pio_clear(LED3_PIO, LED3_PIN_MASK);
-		vTaskDelay(1000);
+		vTaskDelay(500);
+	}
+}
+
+static void task_btn(void *pvParameters)
+{
+	UNUSED(pvParameters);
+	for (;;) {
+		//Troca estado do semaphore
+		if(!pio_get(BUT_PIO_BOARD,PIO_INPUT,BUT_PIN_BOARD_MASK)){
+			xSemaphoreGive( xSemaphore );
+			printf("apertado !\n");
+			vTaskDelay(100);
+		}
 	}
 }
 
@@ -292,6 +320,15 @@ int main(void)
 	pmc_enable_periph_clk(LED3_PIO_ID);
 	pio_set_output(LED3_PIO, LED3_PIN_MASK, 0, 0, 0);
 
+	
+	/* config. pino botao em modo de entrada */
+	pmc_enable_periph_clk(BUT_PIO_BOARD_ID);
+	pio_set_input(BUT_PIO_BOARD, BUT_PIN_BOARD_MASK, PIO_PULLUP | PIO_DEBOUNCE);
+	
+
+	//Semaphore
+    xSemaphore = xSemaphoreCreateCounting(1,0);
+	xSemaphoreTake( xSemaphore, ( TickType_t ) 0 );
 
 	/* Output demo infomation. */
 	printf("-- Freertos Example --\n\r");
@@ -300,10 +337,10 @@ int main(void)
 
 
 	/* Create task to monitor processor activity */
-	if (xTaskCreate(task_monitor, "Monitor", TASK_MONITOR_STACK_SIZE, NULL,
-			TASK_MONITOR_STACK_PRIORITY, NULL) != pdPASS) {
-		printf("Failed to create Monitor task\r\n");
-	}
+	//if (xTaskCreate(task_monitor, "Monitor", TASK_MONITOR_STACK_SIZE, NULL,
+	//		TASK_MONITOR_STACK_PRIORITY, NULL) != pdPASS) {
+	//	printf("Failed to create Monitor task\r\n");
+	//}
 
 	/* Create task to make led blink */
 	if (xTaskCreate(task_led, "Led", TASK_LED_STACK_SIZE, NULL,
@@ -329,6 +366,11 @@ int main(void)
 		printf("Failed to create test led task\r\n");
 	}
 
+	/* Create task to make check btn value */
+	if (xTaskCreate(task_btn, "Btn", TASK_LED_STACK_SIZE, NULL,
+	TASK_LED_STACK_PRIORITY, NULL) != pdPASS) {
+		printf("Failed to create test led task\r\n");
+	}
 	/* Start the scheduler. */
 	vTaskStartScheduler();
 
