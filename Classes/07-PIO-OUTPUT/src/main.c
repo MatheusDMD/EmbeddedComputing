@@ -2,7 +2,7 @@
 * Rafael Corsi   - Insper 
 * rafael.corsi@insper.edu.br        
 *
-* Computação Embarcada
+* ComputaÃ§Ã£o Embarcada
 *
 * 07-PIO-SAIDA
 *
@@ -11,21 +11,21 @@
 * Explicativo : 
 *
 * 1.     
-*    configura o clock interno do periférico
+*    configura o clock interno do perifÃ©rico
 * 
 *  Cristal  |  _ _ _                        Aberto    _ _ _   
 *   |   |   | |     | --> Clk principal       /      |     |
-*   | X | --> | PMC | --> Clk periféricos - -   ---->|PIOC |
+*   | X | --> | PMC | --> Clk perifÃ©ricos - -   ---->|PIOC |
 *   |   |   | |_ _ _| --> ....                       |_ _ _|
 *           |                             
 *             uC
 *
 * 2.
-*    desativa o watchdog para que o uc não seja reinicializado
+*    desativa o watchdog para que o uc nÃ£o seja reinicializado
 *    sem necessitarmos.
 *
 * 3. 
-*    Ativamos o clock do periférico a ser utilizado
+*    Ativamos o clock do perifÃ©rico a ser utilizado
 *
 *  Cristal  |  _ _ _      Fechado  _ _ _  
 *   |   |   | |     | -->         |     |
@@ -35,7 +35,7 @@
 *             uC
 *
 * 4.
-*   Agora começamos a configurar no PIOC o pino responsável por controlar
+*   Agora comeÃ§amos a configurar no PIOC o pino responsÃ¡vel por controlar
 *   o LED:
 *
 *     _ _ _          
@@ -44,18 +44,18 @@
 *    |_ _ _|PIOC6
 *
 *
-*   Para isso é preciso saber que o PIOC possui diversos registradores
-*   que configuram seu funcionamento interno, cada PIO pode tratar até
-*   32 pinos diferentes, sendo que cada pino pode ter uma configuração
-*   própria, isso é possível por cada registrador é composto de 32 bits
-*   e cada bit é responsável por um pino específico do PIO:
+*   Para isso Ã© preciso saber que o PIOC possui diversos registradores
+*   que configuram seu funcionamento interno, cada PIO pode tratar atÃ©
+*   32 pinos diferentes, sendo que cada pino pode ter uma configuraÃ§Ã£o
+*   prÃ³pria, isso Ã© possÃ­vel por cada registrador Ã© composto de 32 bits
+*   e cada bit Ã© responsÃ¡vel por um pino especÃ­fico do PIO:
 *
 *   | bit 31 | bit 30 | ... ... ... | bit 2 | bit 1 | bit 0 |  
 *   ---------------------------------------------------------
 *   | PIOC31 | PIOC30 |             | PIOC2 | PIOC1 | PIOC0 |
 *   ---------------------------------------------------------
 *
-*   Exemplo: desejamos configurar o pino PIOC 8 como sendo saída.
+*   Exemplo: desejamos configurar o pino PIOC 8 como sendo saÃ­da.
 *   
 *   Para isso escrevemos no registrador OER (output enable register) no
 *   bit 8
@@ -63,11 +63,11 @@
 *   PIOC->PIO_OER = (1 << 8); 
 *
 *   O comando anterior pode ser lido como :
-*   O registrador OER do periférico PIOC recebe 1 no bit 8.
+*   O registrador OER do perifÃ©rico PIOC recebe 1 no bit 8.
 *
 *   # Enable/Disable/Status
 *   
-*   Cada registrador de configuração desse microcontrolador possui
+*   Cada registrador de configuraÃ§Ã£o desse microcontrolador possui
 *   geralmente 3 registradores : Enable/Disable/Status
 *
 *    Exemplo para o Output Enable:
@@ -75,8 +75,8 @@
 *    - Disable : Output Disable Register  : ODR : (write only)
 *    - Status  : Output Status Register   : OSR : (read  only)
 *    
-*   O valor efetivo do registrador (por exemplo do Output Enable) está
-*   salve no OSR. Porém para alterarmos seu valor é necessário fazer o
+*   O valor efetivo do registrador (por exemplo do Output Enable) estÃ¡
+*   salve no OSR. PorÃ©m para alterarmos seu valor Ã© necessÃ¡rio fazer o
 *   seu acesso por um dos dois registradores: Enable/Disable.
 *
 *   - Enable : 
@@ -108,10 +108,10 @@
 *    ---------------------   ---------------------   ---------------------       
 *    
 *
-*    Esse comando faz com que o bit 8 no OSR vá de 0 para 1 e automaticamente
-*    o bit recém programando no OER vai para 0.
+*    Esse comando faz com que o bit 8 no OSR vÃ¡ de 0 para 1 e automaticamente
+*    o bit recÃ©m programando no OER vai para 0.
 *
-*    3. Mas como não podemos acessar o OSR, para zerarmos algum de seus bits
+*    3. Mas como nÃ£o podemos acessar o OSR, para zerarmos algum de seus bits
 *    basta escrevermos no ODR (Disable)
 *    
 *    PIO->PIO_ODR = (1<<2); 
@@ -130,10 +130,10 @@
 
 /** 
  * @Brief Defines
- * Aqui incluímos as bibliotecas (head files) necessárias 
+ * Aqui incluÃ­mos as bibliotecas (head files) necessÃ¡rias 
  * para o complementar o nosso arquivo principal main.c
  *
- * O arquivo asf.h é um head file que contém includes para outros arquivos, 
+ * O arquivo asf.h Ã© um head file que contÃ©m includes para outros arquivos, 
  * iremos ver como isso funciona futuramente.
  */
 #include "asf.h"
@@ -141,21 +141,21 @@
 
 /**
  * @Brief LED
- * Declaramos alguns #defines que irã facilitar o desenvolvimento desse projeto.
+ * Declaramos alguns #defines que irÃ£ facilitar o desenvolvimento desse projeto.
  *	LED_PIO_ID	 - 12 
- *	LED_PIO		 - Ponteiro para estrutura que contém os registradores do PIOC
- *  LED_PIN		 - PIO C 8, é o pino que o LED está conectado
- *  LED_PIN_MASK - Máscara para configurarmos o LED
+ *	LED_PIO		 - Ponteiro para estrutura que contÃ©m os registradores do PIOC
+ *  LED_PIN		 - PIO C 8, Ã© o pino que o LED estÃ¡ conectado
+ *  LED_PIN_MASK - MÃ¡scara para configurarmos o LED
  *
  *
- * LED_PIO é uma estrutura que contém os registradores (endereço de memória) do PIO em questão, 
- * podemos acessar cada registrador desse periférico da seguinte maneira :
+ * LED_PIO Ã© uma estrutura que contÃ©m os registradores (endereÃ§o de memÃ³ria) do PIO em questÃ£o, 
+ * podemos acessar cada registrador desse perifÃ©rico da seguinte maneira :
  *	PIOC->PIO_OER = (1 << 8);
- * nesse caso, o registrador Output Enable register do PIOC irá configurar o bit
- * 8 como 1, ou seja, irá configurar o pino PIOC8 como sendo saída.
+ * nesse caso, o registrador Output Enable register do PIOC irÃ¡ configurar o bit
+ * 8 como 1, ou seja, irÃ¡ configurar o pino PIOC8 como sendo saÃ­da.
  * 
  */
-#define LED_PIO_ID	    12        // id do periférico C	
+#define LED_PIO_ID	    12        // id do perifÃ©rico C	
 #define LED_PIO			PIOC
 #define LED_PIN			8
 #define LED_PIN_MASK	(1<<LED_PIN) 
@@ -168,13 +168,13 @@ int main(void)
 {
 
 	/************************************************************************/
-	/* 1. Inicialização do clock interno                                    */
+	/* 1. InicializaÃ§Ã£o do clock interno                                    */
 	/************************************************************************/
 	
 	/**
-	* Periférico : PMC
+	* PerifÃ©rico : PMC
 	* @Brief Inicializa clock do microcontrolador em 300Mhz
-	* A configuração do clock dessa placa está no arquivo:
+	* A configuraÃ§Ã£o do clock dessa placa estÃ¡ no arquivo:
 	* conf_clock.h
 	*/
 	sysclk_init();
@@ -184,73 +184,73 @@ int main(void)
 	/************************************************************************/
 	
     /**
-	* Periférico : Watchdog
+	* PerifÃ©rico : Watchdog
 	* @Brief Desabilita o watchdog
-	* Watchdog é uma função do microcontrolador responsável
-	* por verificar possíveis travamentos.
+	* Watchdog Ã© uma funÃ§Ã£o do microcontrolador responsÃ¡vel
+	* por verificar possÃ­veis travamentos.
 	*/ 
 	WDT->WDT_MR = WDT_MR_WDDIS;
 
 	/************************************************************************/
-	/* 3. Ativa clock no PIO Configuração do PMC	                        */
+	/* 3. Ativa clock no PIO ConfiguraÃ§Ã£o do PMC	                        */
 	/************************************************************************/
 	
 	/**
-	* Periférico : PMC 
+	* PerifÃ©rico : PMC 
 	* @Brief Peripheral Clock Enable Register
-	* O PMC é o periférico responsável pelo controle de energia dos
-	* demais periféricos.
-	* Inicializamos aqui o clock do periférico PIO C.
+	* O PMC Ã© o perifÃ©rico responsÃ¡vel pelo controle de energia dos
+	* demais perifÃ©ricos.
+	* Inicializamos aqui o clock do perifÃ©rico PIO C.
 	*/ 
-	PMC->PMC_PCER0 = (1<<LED_PIO_ID);
+	PMC->PMC_PCER0 = LED_PIN_MASK;
 
 	/************************************************************************/
 	/* PIO				                                                    */
 	/************************************************************************/
 
 	/**
-	* Periférico : PIO C
+	* PerifÃ©rico : PIO C
 	* @Brief Output Enable Register
-	* Configuramos o pino como saída
+	* Configuramos o pino como saÃ­da
 	*/ 
-	PIOC->PIO_OER = (1 << 8);
+	PIOC->PIO_OER = LED_PIN_MASK;
 	
 	/**
-	* Periférico : PIO C
+	* PerifÃ©rico : PIO C
 	* @Brief Peripheral Enable Register
 	* Fazemos com que o controle do pino seja realizado pelo PIO
-	* e não por outro periférico
+	* e nÃ£o por outro perifÃ©rico
 	*/ 
-	PIOC->PIO_PER = (1 << 8);
+	PIOC->PIO_PER = LED_PIN_MASK;
 
 	/**
-	* Periférico : PIO C
+	* PerifÃ©rico : PIO C
 	* @Brief Clear/Set Output Data Register
-	* Aqui controlamos o valor da saída desse pino
+	* Aqui controlamos o valor da saÃ­da desse pino
 	* no caso especifico colocamos 0 (acende o LED)
 	* O registrador :
 	*   - PIO_SODR : coloca 1 no pino 
 	*	- PIO_CODR : coloca 0 no pino 
     */
-	PIOC->PIO_CODR =  (1 << 8);
+	PIOC->PIO_CODR =  LED_PIN_MASK;
 	
 	/************************************************************************/
 	/* Super loop                                                           */
 	/************************************************************************/
 	
 	/**
-	* @Brief Diferente de um código comum que executa em um pc, no uC deve estar
-	* sempre executando um código, por isso utilizamos esse loop infinito.
+	* @Brief Diferente de um cÃ³digo comum que executa em um pc, no uC deve estar
+	* sempre executando um cÃ³digo, por isso utilizamos esse loop infinito.
 	*/
 	int state = 1;
 	long count = 0;
 	while(1){
 		if(count > 100000000){
 			if(state){
-				PIOC->PIO_CODR = (1 << 8);
+				PIOC->PIO_CODR = LED_PIN_MASK;
 				state = 0;
 			}else{
-				PIOC->PIO_SODR = (1 << 8);
+				PIOC->PIO_SODR = LED_PIN_MASK;
 				state = 1;
 			}
 			count = 0;
