@@ -2,21 +2,21 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-src\ASF\common\services\clock\same70\sysclk.c
-
-src\ASF\common\services\delay\sam\cycle_counter.c
-
-src\ASF\common\services\serial\usart_serial.c
-
-src\ASF\common\services\sleepmgr\sam\sleepmgr.c
-
-src\ASF\common\utils\interrupt\interrupt_sam_nvic.c
-
-src\ASF\common\utils\stdio\read.c
-
-src\ASF\common\utils\stdio\write.c
-
 src\ASF\sam\boards\same70_xplained\init.c
+
+src\ASF\sam\common\services\clock\same70\sysclk.c
+
+src\ASF\sam\common\services\delay\sam\cycle_counter.c
+
+src\ASF\sam\common\services\serial\usart_serial.c
+
+src\ASF\sam\common\services\sleepmgr\sam\sleepmgr.c
+
+src\ASF\sam\common\utils\interrupt\interrupt_sam_nvic.c
+
+src\ASF\sam\common\utils\stdio\read.c
+
+src\ASF\sam\common\utils\stdio\write.c
 
 src\ASF\sam\drivers\matrix\matrix.c
 
