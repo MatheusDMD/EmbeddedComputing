@@ -97,6 +97,28 @@
 #define TASK_LED_STACK_SIZE                (1024/sizeof(portSTACK_TYPE))
 #define TASK_LED_STACK_PRIORITY            (tskIDLE_PRIORITY)
 
+/**
+ * LEDs
+ */
+// LED 1
+#define LED1_PIO_ID    ID_PIOC
+#define LED1_PIO       PIOC
+#define LED1_PIN       19
+#define LED1_PIN_MASK  (1 << LED1_PIN)
+
+// LED 2
+#define LED2_PIO_ID    ID_PIOD
+#define LED2_PIO       PIOD
+#define LED2_PIN       26
+#define LED2_PIN_MASK  (1 << LED2_PIN)
+
+// LED 3
+#define LED3_PIO_ID    ID_PIOD
+#define LED3_PIO       PIOD
+#define LED3_PIN       11
+#define LED3_PIN_MASK  (1 << LED3_PIN)
+
+
 extern void vApplicationStackOverflowHook(xTaskHandle *pxTask,
 		signed char *pcTaskName);
 extern void vApplicationIdleHook(void);
@@ -187,6 +209,39 @@ static void task_led(void *pvParameters)
 	}
 }
 
+static void task_led1(void *pvParameters)
+{
+	UNUSED(pvParameters);
+	for (;;) {
+		pio_set(LED1_PIO, LED1_PIN_MASK);
+		vTaskDelay(1000);
+		pio_clear(LED1_PIO, LED1_PIN_MASK);
+		vTaskDelay(1000);
+	}
+}
+
+static void task_led2(void *pvParameters)
+{
+	UNUSED(pvParameters);
+	for (;;) {
+		pio_set(LED2_PIO, LED2_PIN_MASK);
+		vTaskDelay(1000);
+		pio_clear(LED2_PIO, LED2_PIN_MASK);
+		vTaskDelay(1000);
+	}
+}
+
+static void task_led3(void *pvParameters)
+{
+	UNUSED(pvParameters);
+	for (;;) {
+		pio_set(LED3_PIO, LED3_PIN_MASK);
+		vTaskDelay(1000);
+		pio_clear(LED3_PIO, LED3_PIN_MASK);
+		vTaskDelay(1000);
+	}
+}
+
 /**
  * \brief Configure the console UART.
  */
@@ -230,6 +285,14 @@ int main(void)
 	/* Initialize the console uart */
 	configure_console();
 
+	pmc_enable_periph_clk(LED1_PIO_ID);
+	pio_set_output(LED1_PIO, LED1_PIN_MASK, 0, 0, 0);
+	pmc_enable_periph_clk(LED2_PIO_ID);
+	pio_set_output(LED2_PIO, LED2_PIN_MASK, 0, 0, 0);
+	pmc_enable_periph_clk(LED3_PIO_ID);
+	pio_set_output(LED3_PIO, LED3_PIN_MASK, 0, 0, 0);
+
+
 	/* Output demo infomation. */
 	printf("-- Freertos Example --\n\r");
 	printf("-- %s\n\r", BOARD_NAME);
@@ -245,6 +308,24 @@ int main(void)
 	/* Create task to make led blink */
 	if (xTaskCreate(task_led, "Led", TASK_LED_STACK_SIZE, NULL,
 			TASK_LED_STACK_PRIORITY, NULL) != pdPASS) {
+		printf("Failed to create test led task\r\n");
+	}
+
+	/* Create task to make led1 blink */
+	if (xTaskCreate(task_led1, "Led1", TASK_LED_STACK_SIZE, NULL,
+	TASK_LED_STACK_PRIORITY, NULL) != pdPASS) {
+		printf("Failed to create test led task\r\n");
+	}
+
+	/* Create task to make led2 blink */
+	if (xTaskCreate(task_led2, "Led2", TASK_LED_STACK_SIZE, NULL,
+			TASK_LED_STACK_PRIORITY, NULL) != pdPASS) {
+		printf("Failed to create test led task\r\n");
+	}
+
+	/* Create task to make led3 blink */
+	if (xTaskCreate(task_led3, "Led3", TASK_LED_STACK_SIZE, NULL,
+	TASK_LED_STACK_PRIORITY, NULL) != pdPASS) {
 		printf("Failed to create test led task\r\n");
 	}
 
